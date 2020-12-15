@@ -39,9 +39,16 @@ const reducer = (state, action) => {
         case 'GET_VIDEO_SOURCE':
             return {
                 ...state,
-                playing: state.lists.trends.find(item => item.id === Number(action.payload)) 
-                || state.lists.originals.find(item => item.id === Number(action.payload))
-                || []
+                playing: state.lists.trends.find(item => item.id === Number(action.payload)) ||
+                    state.lists.originals.find(item => item.id === Number(action.payload)) || []
+            }
+            break;
+        case 'GET_VIDEO_RESULT':
+            let search = action.payload || ''
+            let regExp = new RegExp('\\b' + search + '\\b', 'gi')
+            return {
+                ...state,
+                result: search.length > 0 ? [state.lists.trends.find(item => item.title.match(regExp)) || state.lists.originals.find(item => item.title.match(regExp)) || []] : []
             }
             break;
         default:
