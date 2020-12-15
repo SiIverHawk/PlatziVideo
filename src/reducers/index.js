@@ -23,6 +23,27 @@ const reducer = (state, action) => {
                 ...state,
                 user: action.payload
             }
+            break;
+        case 'LOGOUT_REQUEST':
+            return {
+                ...state,
+                user: action.payload
+            }
+            break;
+        case 'REGISTER_REQUEST':
+            return {
+                ...state,
+                user: action.payload
+            }
+            break;
+        case 'GET_VIDEO_SOURCE':
+            return {
+                ...state,
+                playing: state.lists.trends.find(item => item.id === Number(action.payload)) 
+                || state.lists.originals.find(item => item.id === Number(action.payload))
+                || []
+            }
+            break;
         default:
             return state
             break;

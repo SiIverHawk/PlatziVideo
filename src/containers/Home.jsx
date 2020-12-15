@@ -5,13 +5,15 @@ import Categories from '../components/Categories'
 import Carousel from '../components/Carousel'
 import CarrouselItem from '../components/CarrouselItem'
 import '../assets/styles/App.scss'
+import Header from '../components/Header'
 
 
 const Home = ({ lists }) => {
 
     return (
         <>
-            <Search />
+            <Header />
+            <Search isHome />
             {Object.keys(lists).map((category, index) => (
                 <Categories key={index} title={`${category.charAt().toUpperCase()}${category.slice(1)}`}>
                     <Carousel>
